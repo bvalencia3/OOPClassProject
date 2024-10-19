@@ -1,150 +1,105 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+package project;
+
 import java.util.Scanner;
 
 public class RunBank {
     // Main Method
 
     public static void main(String[] args) {
+    	
+    	Repository repo = new Repository();
+    	Scanner scanner = new Scanner (System.in);
+    	Checking checkingAccount = new Checking(0, 0);
+    	Savings savingsAccount = new Savings(0, 0, 0);
+    	Credit creditAccount = new Credit(0, 0, 0);
 
         System.out.println("Please enter your first and last name");
-
-        Scanner userName = new Scanner(System.in);
-
-        String name = userName.nextLine();
-
-        // object of the class
-
-        Account bank1 = new Account(name, "");
-
-        bank1.appMenu();
-
-    }
-
-}
-
-// class CSVReader {
-// String path = "";
-// String line = "";
-//
-// try {
-// BufferedReader br = new BufferedReader (new FileReader (path));
-//
-// while ((line = br.readLine() )) !=null){
-// String [] values = line.split(",");
-// System.out.println(values[0]);
-// }
-// catch (FileNotFoundException e) {
-// e.printStackTrace();
-// } catch (IOException e) {
-// e.printStackTrace();
-// }
-// }
-//
-// }
-
-// class Customer {
-
-// String userName;
-// String password;
-// int pin;
-// int routNum;
-
-// public Customer() {
-
-// }
-
-// }
-
-class Account {
-    int balance;
-    String customerName;
-    String customerId;
-
-    // Constructor
-
-    Account(String cname, String cId) {
-        customerName = cname;
-        customerId = cId;
-    }
-
-    void deposit(int amount) {
-        if (amount != 0) {
-            balance = balance + amount;
+        
+        
+        
+        while (true) {
+        	System.out.println("Welcome to miners bank!!");
+        	System.out.println("Please select one of the following options");
+        	System.out.println("1. Deposit");
+        	System.out.println("2. Withdraw");
+        	System.out.println("3. Check Balance");
+        	System.out.println("4. Exit");
+        	
+        	int option = scanner.nextInt();
+        	scanner.nextLine();
+        	
+        	
+        	//deposit amount
+        	switch (option) {
+        	case 1: 
+        		System.out.println("Enter the account you'd like to use (Checking, Savings, Credit)");
+        		String typeChecking = scanner.nextLine().toLowerCase();
+        		System.out.println("Enter deposit ammount: ");
+        		double amountDeposit = scanner.nextDouble();
+        		
+        		if (typeChecking.equals("Checking")) {
+        			checkingAccount.deposit(amountDeposit);
+        		} else if (typeChecking.equals("Savings")) {
+        			savingsAccount.deposit(amountDeposit);
+        		} else if (typeChecking.equals("Credit")) {
+        			creditAccount.deposit(amountDeposit);
+        		} else {
+        			System.out.println("Invalid account type");
+        		}
+        		break;
+        		
+        		
+        	
+        	//withdraw amount
+        	case 2:
+        		System.out.println();
+        		String typeWithdraw = scanner.nextLine().toLowerCase();
+        		System.out.println("Enter withdraw amount: ");
+        		double withdrawAmount = scanner.nextDouble();
+        		
+        		if (typeWithdraw.equals("Checking")) {
+        			checkingAccount.deposit(withdrawAmount);
+        		} else if (typeWithdraw.equals("Savings")) {
+        			savingsAccount.deposit(withdrawAmount);
+        		} else if (typeWithdraw.equals("Credit")) {
+        			creditAccount.deposit(withdrawAmount);
+        		} else {
+        			System.out.println("Invalid account type");
+        		}
+        		break;
+        		
+        		
+        		//Check balance
+        	case 3:
+        		System.out.println("Which account would you like to see? (Checking, Savings, or Credit? ");
+        		String typeBalance = scanner.nextLine().toLowerCase();
+        		if (typeBalance.equals("Checking")) {
+        			System.out.println("Checkings account Balance is: " + checkingAccount.getBalance());
+        			System.out.println();
+        		}else if
+        			(typeBalance.equals("Savings")) {
+            			System.out.println("Savings account Balance is: " + savingsAccount.getBalance());
+            			System.out.println();
+        		}else if
+        			(typeBalance.equals("Credit")) {
+            			System.out.println("Credit account Balance is: " + creditAccount.getBalance());
+            			System.out.println();
+        		
+        		} else {
+        			System.out.println("Invalid account type");
+        		}
+        		break;
+        		
+        		
+        		
+        		//exit
+        	case 4: 
+        		System.out.println("Thank you for using Miners Bank");
+        		scanner.close();
+        		return;   	
+        	}	
         }
+ 
     }
 
-    void withdraw(int amount) {
-        if (amount != 0) {
-            balance = balance - amount;
-        }
-    }
-
-    void appMenu() {
-
-        char option = 0;
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Welcome to miners bank! " + customerName);
-        System.out.println("Your ID is: " + customerId);
-        System.out.println();
-        System.out.println("A. Transfer Money");
-        System.out.println("B. Deposit");
-        System.out.println("C. Withdraw");
-        System.out.println("D. Send Money To Someone");
-        System.out.println("E. Current Balance");
-        System.out.println("F. Exit");
-
-        do {
-
-            System.out.println("=================");
-            System.out.println("Please select from the following options");
-            System.out.println("=================");
-            option = sc.next().charAt(0);
-            option = Character.toUpperCase(option);
-            switch (option) {
-
-                // case 'A':
-                // System.out.println("================");
-                // System.out.println("How much would you like to transfer?: " + balance);
-                // System.out.println("================");
-                // System.out.println();
-                // break;
-                case 'B':
-                    System.out.println("================");
-                    System.out.println("Enter a deposit amount: ");
-                    System.out.println("================");
-                    int amount = sc.nextInt();
-                    deposit(amount);
-                    System.out.println();
-                    break;
-                case 'C':
-                    System.out.println("================");
-                    System.out.println("How much will you withdraw?: ");
-                    System.out.println("================");
-                    int amount2 = sc.nextInt();
-                    withdraw(amount2);
-                    System.out.println();
-                    break;
-                case 'D':
-                    break;
-                case 'E':
-                    System.out.println("================");
-                    System.out.println("Your Balance is " + balance);
-                    System.out.println("================");
-                    System.out.println();
-                    break;
-                case 'F':
-                    System.out.println("================");
-                    break;
-                default:
-                    System.out.println("Invalid option, please try again");
-                    break;
-            }
-        } while (option != 'F');
-
-    }
 }
