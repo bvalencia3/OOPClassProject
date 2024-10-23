@@ -96,7 +96,7 @@ public class RunBank {
         if (account != null) {
             System.out.println("The balance for " + accountType + " account is: $" + account.getBalance());
         } else {
-            System.out.println("Account was not found.");
+            System.out.println("The account was not found.");
         }
     }
 
@@ -114,9 +114,9 @@ public class RunBank {
             System.out.println("Enter amount to deposit:");
             double amount = scanner.nextDouble();
             account.deposit(amount);
-            System.out.println("Deposit of $" + amount + " was successful to your " + accountType + " account.");
+            System.out.println("Deposit was successful");
         } else {
-            System.out.println("Account was not found.");
+            System.out.println("The account was not found.");
         }
     }
 
@@ -133,9 +133,9 @@ public class RunBank {
             System.out.println("Enter amount to withdraw:");
             double amount = scanner.nextDouble();
                 account.withdrawal(amount);
-                System.out.println("Withdrawal of $" + amount + " was successful from your " + accountType + " account.");
+                System.out.println("Withdrawal was successful");
         } else {
-            System.out.println("Account was not found.");
+            System.out.println("The account was not found.");
         }
     }
 
@@ -159,7 +159,7 @@ public class RunBank {
             destinationAccount.deposit(amount);
             System.out.println("Transfer successful!");
         } else {
-            System.out.println("Account(s) not found.");
+            System.out.println("The account was not found.");
         }
     }
 
