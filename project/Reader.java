@@ -9,7 +9,8 @@ public class Reader {
 
   
  
-        String file = "project\\CS 3331 - Bank Users.csv";
+        String file = "OOPClassProject\\project\\CS 3331 - Bank Users.csv";
+
         BufferedReader reader = null;
         String line;
         ArrayList<String[]> bankInfo = new ArrayList<String[]>();  
@@ -33,11 +34,15 @@ public class Reader {
             e.printStackTrace();
         }
         finally {
-            try {
-                reader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (reader!=null){
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
+            
         }
     }
 
