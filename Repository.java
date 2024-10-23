@@ -28,7 +28,12 @@ public class Repository {
      * @param amount the amount to withdraw
      */
     public void withdraw(Checking c, double amount) {
-        // not yet implemented
+    	try {
+            c.withdrawal(amount);  // Call the withdrawal method of the Checking account
+            System.out.println("Withdrawal successful from Checking account.");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage()); //Prints error detail
+        }
     }
 
     /**
@@ -38,7 +43,12 @@ public class Repository {
      * @param amount the amount to withdraw
      */
     public void withdraw(Credit c, double amount) {
-        // not yet implemented
+    	try {
+            c.withdrawal(amount);  // Call the withdrawal method of the Credit account
+            System.out.println("Withdrawal successful from Credit account.");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage()); //Prints error detail
+        }
     }
 
     /**
@@ -48,7 +58,12 @@ public class Repository {
      * @param amount the amount to withdraw
      */
     public void withdraw(Savings s, double amount) {
-        // not yet implemented
+    	try {
+            s.withdrawal(amount);  // Call the withdrawal method of the Savings account
+            System.out.println("Withdrawal of successful from Savings account.");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage()); //Prints error detail
+        }
     }
 
     /**
@@ -58,7 +73,12 @@ public class Repository {
      * @param amount the amount to deposit
      */
     public void deposit(Checking c, double amount) {
-        // not yet implemented
+    	try {
+            c.deposit(amount);  // Call the deposit method of the Checking account
+            System.out.println("Deposit of successful to Checking account.");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage()); //Prints error detail
+        }
     }
 
     /**
@@ -68,7 +88,12 @@ public class Repository {
      * @param amount the amount to deposit
      */
     public void deposit(Credit c, double amount) {
-        // not yet implemented
+    	try {
+            c.makePayment(amount);  // Make a payment towards the credit balance
+            System.out.println("Payment successful to Credit account.");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage()); //Prints error detail
+        }
     }
 
     /**
@@ -78,7 +103,10 @@ public class Repository {
      * @param amount the amount to deposit
      */
     public void deposit(Savings s, double amount) {
-        // not yet implemented
+    	try {
+            s.deposit(amount);  // Call the deposit method of the Savings account
+            System.out.println("Deposit successful to Savings account.");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage()); //Prints error detail
+        }
     }
-
-}
