@@ -1,4 +1,4 @@
-package project;
+package BankProject.src.project;
 
 import java.util.Scanner;
 

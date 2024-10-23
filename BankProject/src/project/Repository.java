@@ -1,4 +1,4 @@
-package project;
+package BankProject.src.project;
 
 /**
  * The Repository class manages different types of bank accounts.

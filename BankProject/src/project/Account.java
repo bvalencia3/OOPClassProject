@@ -1,4 +1,4 @@
-package project;
+package BankProject.src.project;
 
 /**
  * Abstract class representing a generic bank account.

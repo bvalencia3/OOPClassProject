@@ -1,4 +1,4 @@
-package project;
+package BankProject.src.project;
 
 /**
  * an abstract class representing a person.

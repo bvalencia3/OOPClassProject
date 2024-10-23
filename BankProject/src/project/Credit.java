@@ -1,4 +1,4 @@
-package project;
+package BankProject.src.project;
 
 /**
  * Represents a credit account which extends the Account class.

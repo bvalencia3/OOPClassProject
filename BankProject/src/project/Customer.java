@@ -1,4 +1,4 @@
-package project;
+package BankProject.src.project;
 
 /**
  * A subclass of Person, representing a Customer

@@ -1,4 +1,4 @@
-package project;
+package BankProject.src.project;
 
 import java.io.*;
 import java.util.*;
@@ -9,7 +9,7 @@ public class Reader {
 
   
  
-        String file = "OOPClassProject\\project\\CS 3331 - Bank Users.csv";
+        String file = "OOPClassProject\\BankProject\\src\\project\\CS 3331 - Bank Users.csv";
 
         BufferedReader reader = null;
         String line;
