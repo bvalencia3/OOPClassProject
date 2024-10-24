@@ -1,5 +1,6 @@
 
 /**
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
  * The Person class with a name and ID
  */
 public class Person {

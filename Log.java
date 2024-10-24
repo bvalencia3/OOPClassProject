@@ -3,6 +3,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 /**
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
  * The Log class provides functionality to log transactions to a file.
  */
 public class Log {

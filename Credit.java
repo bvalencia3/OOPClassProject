@@ -1,5 +1,6 @@
 
 /**
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
  * The Credit class with a credit balance and limit
  */
 public class Credit extends Account {

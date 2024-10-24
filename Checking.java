@@ -1,5 +1,6 @@
 
 /**
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
  * The checking class represents a customers checking account
  */
 public class Checking extends Account {

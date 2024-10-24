@@ -1,6 +1,7 @@
 
 
 /**
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
  * The Customer class thats shows the user with the checking, savings, and credit accounts
  */
 public class Customer extends Person {

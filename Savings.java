@@ -1,5 +1,6 @@
 
 /**
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
  * The Savings class represents a savings account.
  */
 public class Savings extends Account {

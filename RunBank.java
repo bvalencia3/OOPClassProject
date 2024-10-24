@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 
 /**
- * @author Saul Gonzalez, 
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
  * The RunBank class is the main class for the application. Where all teh classes and methods come
  * together. It will cover user interaction, transactions, and logs.
  */
