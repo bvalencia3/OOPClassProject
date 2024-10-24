@@ -1,10 +1,12 @@
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 
 /**
- * @author Saul Gonzalez
+ * @author Saul Gonzalez, 
  * The RunBank class is the main class for the application. Where all teh classes and methods come
  * together. It will cover user interaction, transactions, and logs.
  */
@@ -38,24 +40,24 @@ public class RunBank {
         List<String[]> accounts = FileReader.readFile("Accounts.csv");
         Customer customer = null;
         
-        for (String[] record : accounts) { //for (int i = 0; i < records.size(); i++) { String[] record = records.get(i);
-            String csvFirstName = record[1].trim();
-            String csvLastName = record[2].trim();
+        for (String[] value : accounts) { //for (int i = 0; i < records.size(); i++) { String[] record = records.get(i);
+            String csvFirstName = value[1].trim();
+            String csvLastName = value[2].trim();
             
             if (csvFirstName.equalsIgnoreCase(firstName) && csvLastName.equalsIgnoreCase(lastName)) { //ignores upper or lowercase
 
                 // Loads account info from the csv file
-                double checkingBalance = Double.parseDouble(record[8]);
-                double savingsBalance = Double.parseDouble(record[10]);
-                double creditBalance = Double.parseDouble(record[13]);
-                double creditMax = Double.parseDouble(record[12]);
+                double checkingBalance = Double.parseDouble(value[8]);
+                double savingsBalance = Double.parseDouble(value[10]);
+                double creditBalance = Double.parseDouble(value[13]);
+                double creditMax = Double.parseDouble(value[12]);
                 
                 //creating objects
                 Checking checking = new Checking(checkingBalance);
                 Savings savings = new Savings(savingsBalance);
                 Credit credit = new Credit(creditBalance, creditMax);
 
-                customer = new Customer(csvFirstName + " " + csvLastName, record[0], checking, savings, credit);
+                customer = new Customer(csvFirstName + " " + csvLastName, value[0], checking, savings, credit);
                 break;
             }
         }
@@ -271,6 +273,46 @@ System.out.println("ERROR - invalid option. Please restart the program and choos
                 break;
             default:
                 System.out.println("Invalid transfer choice.");
+        }
+    }
+
+
+     /**
+     * Updates the balances of the customer in the CSV records and writes them back to the file.
+     * 
+     * @param records the list of CSV records
+     * @param customer the customer whose balances are to be updated
+     */
+    public static void updateCsvRecords(List<String[]> records, Customer customer) {
+        for (String[] record : records) {
+            String csvFirstName = record[1].trim();
+            String csvLastName = record[2].trim();
+
+            // Update the customer's record
+            if (csvFirstName.equalsIgnoreCase(customer.getName().split(" ")[0])
+                    && csvLastName.equalsIgnoreCase(customer.getName().split(" ")[1])) {
+                record[8] = String.valueOf(customer.getCheckingAccount().getBalance()); // Update Checking balance
+                record[10] = String.valueOf(customer.getSavingsAccount().getBalance()); // Update Savings balance
+            }
+        }
+
+        // Write the updated records back to the CSV file
+        writeFile(records);
+    }
+
+    /**
+     * Writes the updated records back to the CSV file.
+     * 
+     * @param records the list of updated records to write to the file
+     */
+    public static void writeFile(List<String[]> records) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Accounts.csv"))) {
+            for (String[] record : records) {
+                writer.write(String.join(",", record));
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error writing to CSV file: " + e.getMessage());
         }
     }
 }

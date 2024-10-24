@@ -10,7 +10,7 @@ public class Log {
     private static final String LOG_FILE = "transactions.log";
 
      /**
-     * Logs a transaction to a log file.
+     * Logs a transaction with a timestamp to the log file.
      * 
      * @param message the transaction message to log
      */
