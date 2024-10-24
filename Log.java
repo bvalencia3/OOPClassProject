@@ -8,7 +8,7 @@ import java.io.IOException;
  */
 public class Log {
 
-    private static final String LOG_FILE = "transactions.log";
+    private static final String LOG_FILE = "Log.log";
 
      /**
      * Logs a transaction with a timestamp to the log file.
