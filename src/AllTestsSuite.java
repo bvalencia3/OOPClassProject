@@ -1,13 +1,27 @@
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterAll;
 
-// Specifies this class as a test suite
 @Suite
-
-// Add other testclasses here
 @SelectClasses({
+        // Add classes with tests
         AccountTest.class
 })
 public class AllTestsSuite {
-    // No code is needed here; the annotations define the suite
+
+    /**
+     * Runs once before all tests in the suite.
+     */
+    @BeforeAll
+    public static void setUpBeforeClass() {
+        System.out.println("Starting test suite setup...");
+    }
+
+    /**
+     * Runs once after all tests in the suite.
+     */
+    @AfterAll
+    public static void tearDownAfterClass() {
+        System.out.println("Test suite complete");
 }

@@ -1,7 +1,5 @@
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,28 +14,8 @@ public class AccountTest {
     private Account account;
 
     /**
-     * Sets up resources required for the AccountTest class.
-     * This method is called once before all test methods.
-     */
-    @BeforeAll
-    public static void setUpBeforeClass() {
-        System.out.println("Starting AccountTest class setup...");
-        // Class-level setup, if needed
-    }
-
-    /**
-     * Cleans up resources used by the AccountTest class.
-     * This method is called once after all test methods.
-     */
-    @AfterAll
-    public static void tearDownAfterClass() {
-        System.out.println("Completed AccountTest class teardown.");
-        // Class-level teardown, if needed
-    }
-
-    /**
      * Initializes a new Account instance before each test.
-     * Sets the initial balance to 1000 for consistent test conditions.
+     * Sets the initial balance to 1000
      */
     @BeforeEach
     public void setUp() {
@@ -46,12 +24,12 @@ public class AccountTest {
     }
 
     /**
-     * Cleans up after each test by resetting the account reference.
-     * Ensures each test runs in isolation.
+     * Cleans up after each test by resetting the account
+     * 
      */
     @AfterEach
     public void tearDown() {
-        System.out.println("Test completed. Resetting account.");
+        System.out.println("Test completed. account resseting.");
         account = null; // Resetting account reference to ensure each test is isolated
     }
 
