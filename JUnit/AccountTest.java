@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * JUnit test class for the Account class.
- * Tests core account operations, such as deposit, withdrawal, balance
+ * Tests account operations, such as deposit, withdrawal, balance
  * retrieval,
  * and transfer functionality in a Checking account.
  */
@@ -15,29 +15,26 @@ public class AccountTest {
 
     private Account account;
 
-    /**
-     * Sets up resources required for the AccountTest class.
+    /*
      * This method is called once before all test methods.
      */
     @BeforeAll
     public static void setUpBeforeClass() {
         System.out.println("Starting AccountTest class setup...");
-        // Class-level setup, if needed
+        
     }
 
-    /**
-     * Cleans up resources used by the AccountTest class.
+    /*
      * This method is called once after all test methods.
      */
     @AfterAll
     public static void tearDownAfterClass() {
         System.out.println("Completed AccountTest class teardown.");
-        // Class-level teardown, if needed
     }
 
     /**
      * Initializes a new Account instance before each test.
-     * Sets the initial balance to 1000 for consistent test conditions.
+     * Sets the initial balance to 1000.
      */
     @BeforeEach
     public void setUp() {
@@ -46,13 +43,13 @@ public class AccountTest {
     }
 
     /**
-     * Cleans up after each test by resetting the account reference.
+     * Cleans up after each test by resetting the accoun.
      * Ensures each test runs in isolation.
      */
     @AfterEach
     public void tearDown() {
         System.out.println("Test completed. Resetting account.");
-        account = null; // Resetting account reference to ensure each test is isolated
+        account = null; 
     }
 
     /**
@@ -67,8 +64,7 @@ public class AccountTest {
 
     /**
      * Tests the withdraw method with a sufficient balance.
-     * Verifies that the withdrawal is successful and the balance is reduced
-     * accordingly.
+     * Verifies that the withdrawal is successful and the balances are updated
      */
     @Test
     public void testWithdrawWithSufficientBalance() {
@@ -79,7 +75,7 @@ public class AccountTest {
 
     /**
      * Tests the withdraw method with an insufficient balance.
-     * Ensures that the withdrawal fails and the balance remains unchanged.
+     * Ensures that the withdrawal fails and the balance remains are updated
      */
     @Test
     public void testWithdrawWithInsufficientBalance() {
@@ -97,7 +93,7 @@ public class AccountTest {
     }
 
     /**
-     * Tests the transfer method by transferring funds to a target account.
+     * Tests the transfer method by transferring funds to another account.
      * Verifies that the transfer is successful and the balances of both accounts
      * are updated correctly.
      */
