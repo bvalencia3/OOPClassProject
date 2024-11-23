@@ -1,7 +1,7 @@
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
 
-// Specifies this class as a test suite
+//class as test suite
 @Suite
 
 // Add other testclasses here
@@ -9,5 +9,5 @@ import org.junit.platform.suite.api.Suite;
         AccountTest.class
 })
 public class AllTestsSuite {
-    // No code is needed here; the annotations define the suite
+
 }
