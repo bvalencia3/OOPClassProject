@@ -1,0 +1,13 @@
+[2024-11-07 08:29:32] User: Daniel C, Payment Sent of 100.00 to Checking. New Balance: 694.74
+[2024-11-07 08:29:32] User: Pam A, Payment Received of 100.00 to Checking. New Balance: 230.00
+[2024-11-07 08:32:31] User: Daniel C, Deposit of 200.00 to Checking. New Balance: 894.74
+[2024-11-07 08:32:43] User: Daniel C, Payment Sent of 200.00 to Checking. New Balance: 694.74
+[2024-11-07 08:32:43] User: Pam A, Payment Received from Daniel C of 200.00 to Checking. New Balance: 430.00
+[2024-11-07 08:34:22] User: Daniel C, Payment Sent to Pam A of 100.00 to Checking. New Balance: 594.74
+[2024-11-07 08:34:22] User: Pam A, Payment Received from Daniel C of 100.00 to Checking. New Balance: 530.00
+[2024-11-09 15:46:51] User: Daniel C, Payment Sent to Pam A of 20.00 to Checking. New Balance: 574.74
+[2024-11-09 15:46:51] User: Pam A, Payment Received from Daniel C of 20.00 to Savings. New Balance: 530.00
+[2024-11-09 15:50:21] User: Daniel C, Payment Sent to Pam A of 30.00 to Checking. New Balance: 544.74
+[2024-11-09 15:50:21] User: Pam A, Payment Received from Daniel C of 30.00 to Checking. New Balance: 560.00
+[2024-11-09 23:02:29] User: Daniel B, Payment Sent to Daniel A of 10.00 to Checking. New Balance: 352.40
+[2024-11-09 23:02:29] User: Daniel A, Payment Received from Daniel B of 10.00 to Checking. New Balance: 867.56
