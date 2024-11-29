@@ -7,7 +7,9 @@ import org.junit.platform.suite.api.Suite;
 // Add other testclasses here
 @SelectClasses({
         AccountTest.class
+        CustomerTest.class
 })
+
 public class AllTestsSuite {
 
 }

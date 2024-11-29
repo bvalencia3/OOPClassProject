@@ -21,7 +21,7 @@ public class AccountTest {
     @BeforeAll
     public static void setUpBeforeClass() {
         System.out.println("Starting AccountTest class setup...");
-        
+
     }
 
     /*
@@ -49,7 +49,7 @@ public class AccountTest {
     @AfterEach
     public void tearDown() {
         System.out.println("Test completed. Resetting account.");
-        account = null; 
+        account = null;
     }
 
     /**
