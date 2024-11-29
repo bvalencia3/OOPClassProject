@@ -1,34 +1,28 @@
 import java.util.List;
-import java.util.Scanner;
 import java.util.Map;
+import java.util.Scanner;
 
-/**
- * BankService class will handle all the bank option methods
- * To include, checkbalance, withdraw, transfer, and deposit methods
- */
 public class BankService {
 
     /**
-     * Displays the balance of the customer's accounts.
-     * 
+     * Displays the balances of all accounts for the customer.
+     *
      * @param customer the customer whose balances are to be displayed
      */
     public void checkBalance(Customer customer) {
-        System.out.println();
         System.out.println("--- Account Balances ---");
         System.out.println("Checking: " + customer.getCheckingAccount().getBalance());
         System.out.println("Savings: " + customer.getSavingsAccount().getBalance());
         System.out.println("Credit: " + customer.getCreditAccount().getBalance());
-        System.out.println();
-        System.out.println("-----------------------");
+        System.out.println("------------------------");
     }
 
     /**
-     * Deposits a specified amount into a selected account of the customer.
-     * 
+     * Allows the customer to deposit into their accounts.
+     *
      * @param customer the customer making the deposit
-     * @param scanner  a scanner to receive user input
-     * @param records  the list of user records to update with the new balance
+     * @param scanner  the scanner to receive user input
+     * @param records  the list of user records
      */
     public void deposit(Customer customer, Scanner scanner, List<String[]> records) {
         System.out.println("Which account would you like to deposit into?");
@@ -39,29 +33,26 @@ public class BankService {
         System.out.print("Enter the amount to deposit: ");
         double amount = scanner.nextDouble();
 
-        String userName = customer.getName();
+        TransactionLogger logger = TransactionLogger.getInstance();
         if (accountChoice == 1) {
             customer.getCheckingAccount().deposit(amount);
             double newBalance = customer.getCheckingAccount().getBalance();
-            System.out.println("Deposited " + amount + " to Checking account.");
-            Log.logTransaction(userName, "Deposit", amount, newBalance, "Checking");
+            logger.logTransaction(customer.getName(), "Deposit", amount, "Checking", newBalance);
         } else if (accountChoice == 2) {
             customer.getSavingsAccount().deposit(amount);
             double newBalance = customer.getSavingsAccount().getBalance();
-            System.out.println("Deposited " + amount + " to Savings account.");
-            Log.logTransaction(userName, "Deposit", amount, newBalance, "Savings");
+            logger.logTransaction(customer.getName(), "Deposit", amount, "Savings", newBalance);
         } else {
             System.out.println("Invalid account choice.");
         }
-        updateCsvRecords(records, customer); // updates csv file
     }
 
     /**
-     * Withdraws a specified amount from a selected account of the customer.
-     * 
+     * Allows the customer to withdraw funds from their accounts.
+     *
      * @param customer the customer making the withdrawal
-     * @param scanner  a scanner to receive user input
-     * @param records  the list of user records to update with the new balance
+     * @param scanner  the scanner to receive user input
+     * @param records  the list of user records
      */
     public void withdrawal(Customer customer, Scanner scanner, List<String[]> records) {
         System.out.println("Which account would you like to withdraw from?");
@@ -72,90 +63,80 @@ public class BankService {
         System.out.print("Enter the amount to withdraw: ");
         double amount = scanner.nextDouble();
 
-        String userName = customer.getName();
+        TransactionLogger logger = TransactionLogger.getInstance();
         if (accountChoice == 1) {
             if (customer.getCheckingAccount().withdraw(amount)) {
                 double newBalance = customer.getCheckingAccount().getBalance();
-                System.out.println("Withdrew " + amount + " from Checking account.");
-                Log.logTransaction(userName, "Withdrawal", amount, newBalance, "Checking");
+                logger.logTransaction(customer.getName(), "Withdrawal", amount, "Checking", newBalance);
             } else {
                 System.out.println("Insufficient funds!");
             }
         } else if (accountChoice == 2) {
             if (customer.getSavingsAccount().withdraw(amount)) {
                 double newBalance = customer.getSavingsAccount().getBalance();
-                System.out.println("Withdrew " + amount + " from Savings account.");
-                Log.logTransaction(userName, "Withdrawal", amount, newBalance, "Savings");
+                logger.logTransaction(customer.getName(), "Withdrawal", amount, "Savings", newBalance);
             } else {
                 System.out.println("Insufficient funds!");
             }
         } else {
             System.out.println("Invalid account choice.");
         }
-        updateCsvRecords(records, customer); // updates csv file
     }
 
     /**
-     * Transfers a specified amount between the customer's checking and savings
+     * Allows the customer to transfer funds between their checking and savings
      * accounts.
-     * 
+     *
      * @param customer the customer making the transfer
-     * @param scanner  a scanner to receive user input
-     * @param records  the list of user records to update with the new balances
+     * @param scanner  the scanner to receive user input
+     * @param records  the list of user records
      */
     public void transfer(Customer customer, Scanner scanner, List<String[]> records) {
         System.out.println("Choose the direction of transfer:");
         System.out.println("1. Checking to Savings");
         System.out.println("2. Savings to Checking");
-        System.out.print("Enter your choice (1 or 2): ");
         int choice = scanner.nextInt();
 
         System.out.print("Enter the amount to transfer: ");
         double amount = scanner.nextDouble();
 
-        String userName = customer.getName();
+        TransactionLogger logger = TransactionLogger.getInstance();
         boolean success = false;
+
         if (choice == 1) {
-            // Transfer from Checking to Savings
             if (customer.getCheckingAccount().withdraw(amount)) {
                 customer.getSavingsAccount().deposit(amount);
-                double newBalanceChecking = customer.getCheckingAccount().getBalance();
-                double newBalanceSavings = customer.getSavingsAccount().getBalance();
-                System.out.println("Transferred " + amount + " from Checking to Savings.");
-                Log.logTransaction(userName, "Transfer", amount, newBalanceChecking, "Checking");
-                Log.logTransaction(userName, "Transfer", amount, newBalanceSavings, "Savings");
                 success = true;
+                logger.logTransaction(customer.getName(), "Transfer", amount, "Checking to Savings",
+                        customer.getCheckingAccount().getBalance());
             } else {
-                System.out.println("Insufficient funds!");
+                System.out.println("Insufficient funds in Checking account.");
             }
         } else if (choice == 2) {
-            // Transfer from Savings to Checking
             if (customer.getSavingsAccount().withdraw(amount)) {
                 customer.getCheckingAccount().deposit(amount);
-                double newBalanceSavings = customer.getSavingsAccount().getBalance();
-                double newBalanceChecking = customer.getCheckingAccount().getBalance();
-                System.out.println("Transferred " + amount + " from Savings to Checking.");
-                Log.logTransaction(userName, "Transfer", amount, newBalanceSavings, "Savings");
-                Log.logTransaction(userName, "Transfer", amount, newBalanceChecking, "Checking");
                 success = true;
+                logger.logTransaction(customer.getName(), "Transfer", amount, "Savings to Checking",
+                        customer.getSavingsAccount().getBalance());
             } else {
-                System.out.println("Insufficient funds!");
+                System.out.println("Insufficient funds in Savings account.");
             }
         } else {
-            System.out.println("Invalid choice. Please enter 1 or 2.");
+            System.out.println("Invalid transfer choice.");
         }
 
         if (success) {
-            updateCsvRecords(records, customer); // Update CSV records ONLY if the transfer was successful
+            System.out.println("Transfer successful.");
         }
     }
 
     /**
-     * Pays an amount from the customer to another user.
-     * 
-     * @param sender  the customer sending the payment
-     * @param scanner a scanner to receive user input
-     * @param records the list of user records to update with the new balances
+     * Allows the customer to pay someone else by transferring funds.
+     *
+     * @param sender  the customer making the payment
+     * @param scanner the scanner to receive user input
+     * @param records the list of user records
+     * @param header  the header map for the user records
      */
     public void paySomeone(Customer sender, Scanner scanner, List<String[]> records, Map<String, Integer> header) {
         System.out.print("Enter the first name of the person you want to pay: ");
@@ -245,44 +226,16 @@ public class BankService {
         }
 
         if (transactionSuccess) {
-            System.out.println("Paid " + amount + " to " + recipient.getName() + " successfully.");
-            updateCsvRecords(records, sender); // Update sender's balance in CSV
-            updateCsvRecords(records, recipient); // Update recipient's balance in CSV
+            System.out.println("Payment of " + amount + " to " + recipient.getName() + " successful.");
 
-            // Log the transaction for the sender, including the payee's name
-            String senderLogMessage = "Payment Sent to " + recipient.getName();
-            Log.logTransaction(sender.getName(), senderLogMessage, amount,
-                    sender.getCheckingAccount().getBalance(), senderAccountType);
-
-            // Log the transaction for the recipient, including the payer's name
-            String recipientLogMessage = "Payment Received from " + sender.getName();
-            Log.logTransaction(recipient.getName(), recipientLogMessage, amount,
-                    recipient.getCheckingAccount().getBalance(), recipientAccountType);
+            TransactionLogger logger = TransactionLogger.getInstance();
+            logger.logTransaction(sender.getName(), "Payment Sent", amount, senderAccountType,
+                    sender.getCheckingAccount().getBalance());
+            logger.logTransaction(recipient.getName(), "Payment Received", amount, "Checking",
+                    recipient.getCheckingAccount().getBalance());
         } else {
             System.out.println("Transaction failed due to insufficient funds or invalid account choice.");
         }
     }
 
-    /**
-     * Updates the customer's balance in the CSV records.
-     * 
-     * @param records  the list of user records
-     * @param customer the customer whose balance is updated
-     */
-    public void updateCsvRecords(List<String[]> records, Customer customer) {
-        String[] customerName = customer.getName().split(" ");
-        String firstName = customerName[0];
-        String lastName = customerName[1];
-
-        for (int i = 0; i < records.size(); i++) {
-            String[] record = records.get(i);
-            if (record[1].trim().equalsIgnoreCase(firstName) && record[2].trim().equalsIgnoreCase(lastName)) {
-                record[9] = String.valueOf(customer.getCheckingAccount().getBalance());
-                record[11] = String.valueOf(customer.getSavingsAccount().getBalance());
-                break;
-            }
-        }
-
-        FileWriterUtility.writeToFile("Accounts.csv", records);
-    }
 }

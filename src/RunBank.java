@@ -106,7 +106,7 @@ public class RunBank {
         }
     }
 
-    private static Customer findCustomer(List<String[]> records, Map<String, Integer> header, String firstName,
+    public static Customer findCustomer(List<String[]> records, Map<String, Integer> header, String firstName,
             String lastName) {
         for (String[] record : records) {
             if (record[header.get("First Name")].trim().equalsIgnoreCase(firstName)
