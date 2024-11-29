@@ -228,7 +228,7 @@ public class BankService {
         if (transactionSuccess) {
             System.out.println("Payment of " + amount + " to " + recipient.getName() + " successful.");
 
-            TransactionLogger logger = TransactionLogger.getInstance();
+            TransactionLogger logger = TransactionLogger.getInstance(); // uses singleton design pattern
             logger.logTransaction(sender.getName(), "Payment Sent", amount, senderAccountType,
                     sender.getCheckingAccount().getBalance());
             logger.logTransaction(recipient.getName(), "Payment Received", amount, "Checking",

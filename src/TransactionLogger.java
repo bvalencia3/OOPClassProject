@@ -19,6 +19,8 @@ public class TransactionLogger {
     }
 
     // Public method to get the singleton instance
+    // Only one instance of TransactionLogger exists in the entire program
+    // Singleton instance is created using a private constructor.
     public static synchronized TransactionLogger getInstance() {
         if (instance == null) {
             instance = new TransactionLogger();
@@ -48,7 +50,8 @@ public class TransactionLogger {
 
     // Retrieve all transactions
     public List<String[]> getAllTransactions() {
-        return new ArrayList<>(transactions); // Return a copy to prevent modification
+        // returns copy to prevent modification
+        return new ArrayList<>(transactions);
     }
 
     // Retrieve transactions for a specific customer

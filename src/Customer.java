@@ -53,6 +53,10 @@ public class Customer extends Person {
         return creditAccount;
     }
 
+    public double getCreditLimit() {
+        return creditAccount.getCreditLimit();
+    }
+
     /**
      * Returns a string of the Customer.
      * 

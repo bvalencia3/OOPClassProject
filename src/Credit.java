@@ -18,6 +18,10 @@ public class Credit extends Account {
         this.creditLimit = creditLimit;
     }
 
+    public double getCreditLimit() {
+        return creditLimit;
+    }
+
     /**
      * Withdraws an amount from the credit account
      * 
