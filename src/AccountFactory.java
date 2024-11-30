@@ -1,7 +1,7 @@
 public class AccountFactory {
 
     /**
-     * Creates an account based on a string identifier.
+     * Creates a class that will house the accounts
      *
      * @param type        the type of account to create ("Checking", "Savings",
      *                    "Credit")
