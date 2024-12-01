@@ -1,0 +1,15 @@
+Daniel C
+ID: 81
+----------------------------------------------------------------------------------------------------------------------
+Checking Starting Balance: 544.74 | Savings Starting Balance: 342.74 | Credit Starting Balance: -505.4
+----------------------------------------------------------------------------------------------------------------------
+[2024-11-28 20:36:52] User: Daniel C, Payment Received from Pam A of 5.00 to Checking. New Balance: 549.74
+[2024-11-28 20:52:17] User: Daniel C, Payment Received from Pam A of 6.00 to Checking. New Balance: 550.74
+[2024-11-28 21:40:29] User: Daniel C, Deposit of 12.00 to Checking. New Balance: 556.74
+[2024-11-28 21:43:57] User: Daniel C, Payment Sent of 3.00 to Checking. New Balance: 541.74
+[2024-11-28 21:45:17] User: Daniel C, Payment Sent of 5.00 to Checking. New Balance: 539.74
+----------------------------------------------------------------------------------------------------------------------
+Account balances after transactions:
+Checking Account Balance: 544.74
+Savings Account Balance: 342.74
+Credit Account Balance: -505.4

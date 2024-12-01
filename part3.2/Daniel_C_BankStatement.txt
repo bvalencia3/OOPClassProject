@@ -1,0 +1,13 @@
+Bank Statement
+=======================
+Name: Daniel C
+Address: 500 W. University Ave, El Paso, TX 79968
+Phone Number: (915) 747-5044
+
+Account Details:
+Checking Balance: 544.74
+Savings Balance: 342.74
+Credit Balance: -505.4
+Credit Limit: 9400
+
+Transactions:
