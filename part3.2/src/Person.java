@@ -1,6 +1,8 @@
 
 /**
- * The Person class represents a person with a name and an ID.
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
+ * 
+ *         The Person class represents a person with a name and an ID.
  */
 public class Person {
     private String name;

@@ -8,8 +8,10 @@ import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
 /**
- * The FileReaderUtility class provides a method to read CSV files using
- * OpenCSV.
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
+ * 
+ *         The FileReaderUtility class provides a method to read CSV files using
+ *         OpenCSV.
  */
 public class FileReaderUtility {
 

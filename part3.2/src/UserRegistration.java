@@ -4,12 +4,19 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
+ * 
+ *         Class that handles user registration info
+ */
+
 public class UserRegistration {
 
-    private static int lastUserId = 1000; // Default starting point if no records exist
+    // Default starting if no ID exist
+    private static int lastUserId = 1000;
 
     /**
-     * Registers a new user by adding their details to the records.
+     * Registers a new user by adding their details to the csv.
      * 
      * @param records the current list of user records to update with the new user's
      *                information
@@ -26,15 +33,16 @@ public class UserRegistration {
         String phoneNumber = getInput(scanner, "Enter Phone Number: ");
         int creditScore = Integer.parseInt(getInput(scanner, "Enter Credit Score: "));
 
-        int userId = ++lastUserId; // Increment the last used ID to generate a new one
+        // Increment the last used ID to generate a new one
+        int userId = ++lastUserId;
         double creditLimit = calculateCreditLimit(creditScore);
 
-        // Generate unique account numbers
+        // Generates unique account numbers
         int checkingAccountNumber = generateUniqueAccountNumber();
         int savingsAccountNumber = generateUniqueAccountNumber();
         int creditAccountNumber = generateUniqueAccountNumber();
 
-        // Use the factory to create accounts
+        // Use the Factory Design Pattern to create accounts
         Account checking = AccountFactory.createAccount("checking", 15.0, 0);
         Account savings = AccountFactory.createAccount("savings", 15.0, 0);
         Account credit = AccountFactory.createAccount("credit", 0.0, creditLimit);
@@ -69,8 +77,9 @@ public class UserRegistration {
         return scanner.nextLine();
     }
 
+    // Formats the DOB
     private static String formatDateOfBirth(String dobInput) {
-        return dobInput; // Simplified for brevity
+        return dobInput;
     }
 
     private static String collectAddress(Scanner scanner) {
@@ -82,7 +91,7 @@ public class UserRegistration {
     }
 
     private static int generateUniqueAccountNumber() {
-        return 1000 + (int) (Math.random() * 9000); // Simplified for brevity
+        return 1000 + (int) (Math.random() * 9000);
     }
 
     private static double calculateCreditLimit(int creditScore) {

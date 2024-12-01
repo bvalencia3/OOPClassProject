@@ -6,12 +6,19 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
+ * 
+ *         Class that handles the records for transactions and logs them into a
+ *         file
+ */
+
 public class TransactionLogger {
 
     private static TransactionLogger instance; // Single instance
     private static final String LOG_FILE = "transactions.log";
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    private final List<String[]> transactions; // In-memory transaction list
+    private final List<String[]> transactions; // Transaction list (In memory)
 
     // Private constructor to prevent instantiation
     private TransactionLogger() {
@@ -28,7 +35,7 @@ public class TransactionLogger {
         return instance;
     }
 
-    // Log a transaction
+    // Logs transaction
     public void logTransaction(String userName, String transactionType, double amount, String accountName,
             double newBalance) {
         String timestamp = LocalDateTime.now().format(formatter);

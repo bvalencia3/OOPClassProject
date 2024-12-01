@@ -1,3 +1,11 @@
+
+/**
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
+ * 
+ *         AccountFactory class that will house the accounts that are given to
+ *         new customers
+ */
+
 public class AccountFactory {
 
     /**
@@ -6,7 +14,7 @@ public class AccountFactory {
      * @param type        the type of account to create ("Checking", "Savings",
      *                    "Credit")
      * @param balance     the initial balance of the account
-     * @param creditLimit the credit limit (only for Credit accounts)
+     * @param creditLimit the credit limit
      * @return the created Account object
      */
     public static Account createAccount(String type, double balance, double creditLimit) {

@@ -5,9 +5,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Handles logging of transaction details to a log file.
- * Includes timestamp, transaction type, amount, resulting balance, and user
- * information.
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
+ * 
+ *         Handles logging of transaction details to a log file.
+ *         Includes timestamp, transaction type, amount, resulting balance, and
+ *         user
+ *         information.
  */
 public class Log {
 

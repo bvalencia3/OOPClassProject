@@ -1,6 +1,7 @@
 
 /**
  * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
+ * 
  *         The abstract Account class represents a bank account.
  *         The account class will implement methods from the BankOperations
  *         Class

@@ -1,8 +1,11 @@
 
 /**
- * Interface representing basic bank operations for accounts.
- * Ensures each account type supports deposit, withdrawal, transfer, and balance
- * retrieval.
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
+ * 
+ *         Interface representing basic bank operations for accounts.
+ *         Ensures each account type supports deposit, withdrawal, transfer, and
+ *         balance
+ *         retrieval.
  */
 public interface BankOperations {
 

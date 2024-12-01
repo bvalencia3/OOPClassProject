@@ -5,6 +5,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
+ * 
+ *         Bank Manager class that will handle including creating new users,
+ *         viewing
+ *         transactions, and generating bank statements.
+ */
+
 public class BankManager {
 
     /**

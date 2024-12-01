@@ -1,10 +1,12 @@
 import java.util.List;
-import java.util.Scanner;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
- * BankService class will handle all the bank option methods
- * To include, checkbalance, withdraw, transfer, and deposit methods
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
+ * 
+ *         BankService class will handle all the bank option methods
+ *         To include, checkbalance, withdraw, transfer, and deposit methods
  */
 public class BankService {
 
@@ -264,8 +266,9 @@ public class BankService {
     }
 
     /**
-     * handles the generation of the User's transaction file 
-     * @param customer a Customer object containing their account info
+     * handles the generation of the User's transaction file
+     * 
+     * @param customer  a Customer object containing their account info
      * @param firstName
      * @param lastName
      */

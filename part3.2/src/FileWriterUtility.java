@@ -5,6 +5,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author Saul Gonzalez, Bruno Valencia, Gian Hernandez
+ *         File writer class that writes records to CSV
+ */
+
 public class FileWriterUtility {
 
     /**
@@ -26,13 +31,14 @@ public class FileWriterUtility {
 
     /**
      * Generates the User Transaction File
+     * 
      * @param customer
      * @param checkStarting
      * @param savStarting
      * @param credStarting
      */
     public void generateTransFile(Customer customer, double checkStarting, double savStarting, double credStarting) {
-        String filePath = customer.getName()+"_transactions.txt";
+        String filePath = customer.getName() + "_transactions.txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             formHeader(writer, customer);
@@ -41,27 +47,31 @@ public class FileWriterUtility {
             formEndBalances(writer, customer);
         } catch (IOException e) {
             System.out.println("Error writing to txt file: " + e.getMessage());
-        }        
+        }
     }
 
     private void formHeader(BufferedWriter writer, Customer customer) {
         try {
             writer.write(customer.getName());
             writer.newLine();
-            writer.write("ID: "+ customer.getId());
+            writer.write("ID: " + customer.getId());
             writer.newLine();
-            writer.write("----------------------------------------------------------------------------------------------------------------------");
-            writer.newLine(); 
+            writer.write(
+                    "----------------------------------------------------------------------------------------------------------------------");
+            writer.newLine();
         } catch (IOException e) {
             System.out.println("Error writing to txt file: " + e.getMessage());
         }
     }
 
-    private void formStartBalances(BufferedWriter writer, double checkStarting, double savStarting, double credStarting) {
+    private void formStartBalances(BufferedWriter writer, double checkStarting, double savStarting,
+            double credStarting) {
         try {
-            writer.write("Checking Starting Balance: "+checkStarting+" | Savings Starting Balance: "+savStarting+" | Credit Starting Balance: "+credStarting);
+            writer.write("Checking Starting Balance: " + checkStarting + " | Savings Starting Balance: " + savStarting
+                    + " | Credit Starting Balance: " + credStarting);
             writer.newLine();
-            writer.write("----------------------------------------------------------------------------------------------------------------------");
+            writer.write(
+                    "----------------------------------------------------------------------------------------------------------------------");
             writer.newLine();
         } catch (IOException e) {
             System.out.println("Error writing to txt file: " + e.getMessage());
@@ -85,7 +95,8 @@ public class FileWriterUtility {
             System.err.println("Error reading log file: " + e.getMessage());
         }
         try {
-            writer.write("----------------------------------------------------------------------------------------------------------------------");
+            writer.write(
+                    "----------------------------------------------------------------------------------------------------------------------");
             writer.newLine();
         } catch (IOException e) {
             System.out.println("Error writing to txt file: " + e.getMessage());
