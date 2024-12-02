@@ -26,6 +26,7 @@ public interface BankOperations {
      * 
      * @param amount the amount to withdraw
      * @return true if the withdrawal is successful, false otherwise
+     * @throws InsufficientFundsException
      */
     boolean withdraw(double amount);
 

@@ -75,24 +75,31 @@ public class BankService {
         double amount = scanner.nextDouble();
 
         String userName = customer.getName();
-        if (accountChoice == 1) {
-            if (customer.getCheckingAccount().withdraw(amount)) {
-                double newBalance = customer.getCheckingAccount().getBalance();
-                System.out.println("Withdrew " + amount + " from Checking account.");
-                Log.logTransaction(userName, "Withdrawal", amount, newBalance, "Checking");
+
+        try {
+
+            if (accountChoice == 1) {
+                if (customer.getCheckingAccount().withdraw(amount)) {
+                    double newBalance = customer.getCheckingAccount().getBalance();
+                    System.out.println("Withdrew " + amount + " from Checking account.");
+                    Log.logTransaction(userName, "Withdrawal", amount, newBalance, "Checking");
+                } else {
+                    System.out.println("Insufficient funds!");
+                }
+            } else if (accountChoice == 2) {
+                if (customer.getSavingsAccount().withdraw(amount)) {
+                    double newBalance = customer.getSavingsAccount().getBalance();
+                    System.out.println("Withdrew " + amount + " from Savings account.");
+                    Log.logTransaction(userName, "Withdrawal", amount, newBalance, "Savings");
+                } else {
+                    System.out.println("Insufficient funds!");
+                }
             } else {
-                System.out.println("Insufficient funds!");
+                System.out.println("Invalid account choice.");
             }
-        } else if (accountChoice == 2) {
-            if (customer.getSavingsAccount().withdraw(amount)) {
-                double newBalance = customer.getSavingsAccount().getBalance();
-                System.out.println("Withdrew " + amount + " from Savings account.");
-                Log.logTransaction(userName, "Withdrawal", amount, newBalance, "Savings");
-            } else {
-                System.out.println("Insufficient funds!");
-            }
-        } else {
-            System.out.println("Invalid account choice.");
+            // Custom Exception
+        } catch (AccountOperationException e) {
+            System.out.println("Error: " + e.getMessage());
         }
         updateCsvRecords(records, customer); // updates csv file
     }

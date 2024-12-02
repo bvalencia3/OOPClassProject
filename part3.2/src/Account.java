@@ -47,11 +47,12 @@ public abstract class Account implements BankOperations {
      */
     @Override
     public boolean withdraw(double amount) {
-        if (amount <= balance) {
-            balance -= amount;
-            return true;
+        if (amount > balance) {
+            throw new AccountOperationException(
+                    "Insufficient funds: Attempted withdrawal: " + amount + ", Available: " + balance);
         }
-        return false;
+        balance -= amount;
+        return true;
     }
 
     /**
