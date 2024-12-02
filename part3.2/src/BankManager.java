@@ -26,7 +26,7 @@ public class BankManager {
     public void handleBankManager(Scanner scanner, List<String[]> records, Map<String, Integer> header) {
         boolean exit = false;
         while (!exit) {
-            System.out.println("\nWelcome, Bank Manager. What would you like to do?");
+            System.out.println("\nWelcome, Bank Manager to Miners Bank! What would you like to do?");
             System.out.println("1. View All Transactions");
             System.out.println("2. Process Transactions File");
             System.out.println("3. Create a New User");
@@ -35,7 +35,7 @@ public class BankManager {
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Clear buffer
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -52,7 +52,7 @@ public class BankManager {
                     break;
                 case 5:
                     exit = true;
-                    System.out.println("Goodbye, Manager!");
+                    System.out.println("Goodbye, Thank you manager!");
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
@@ -141,7 +141,6 @@ public class BankManager {
         int count = 1;
 
         for (String[] record : trans) {
-            // System.out.println("p");
             String action = record[header.get("Action")].trim();
             String amount = record[header.get("Action Amount")].trim();
             count++;
